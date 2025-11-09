@@ -13,6 +13,26 @@ header {
     background-color: #18a6c9;
 }
 
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+    color: #ffd700;
+}
+
 .main-container {
     flex: 1;
     display: flex;

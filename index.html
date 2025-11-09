@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Paroolikontroll</title>
+    <link rel="stylesheet" href="lehe_kujundus.css">
 </head>
 <body>
-    <h1> Veebileht parooli tugevuse testimiseks. </h1>
-    <p> Sisesta näidisparool ning saa tagasisidet parooli tugevuse kohta. </p>
+    <header>
+    <h1>Veebileht parooli tugevuse testimiseks.</h1>
+    </header>
     
+    <main class="main-container">
+    <div class="password-container">
+    <h2>Kontrolli oma parooli</h2>
+    <p>Sisesta näidisparool ning saa tagasisidet parooli tugevuse kohta.</p>
+    <input type="password" id="password-input" placeholder="Sisesta parool testimiseks.">
+    <button id="check-btn">Kontrolli parooli</button>
+    <div id="feedback"></div>
+</div>    
+</main>
+
 </body>
 </html>

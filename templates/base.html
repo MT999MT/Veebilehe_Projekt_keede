@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Paroolikontroll{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lehe_kujundus.css') }}">
+    <link rel="icon" href="data:;base64,=" />
+</head>
+<body>
+    <header>
+    <h1>Automaatne parooli tugevuse kontroll</h1>
+    <nav>
+        <ul class ="nav-links">
+            <li><a href="/">Avaleht</a></li>  <!-- Flaski avaleht route -->
+            <li><a href="/about">Meist</a></li> <!-- Flaski Meist lehe route -->
+            <li><a href="/kontakt">Kontakt</a></li> <!-- Flaski Kontakt lehe route -->
+        </ul>
+     </nav>
+</header>
+
+    <main class="main-container">
+        {% block content %} <!-- Siia läheb iga lehe ainulaadne sisu -->
+        {% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

@@ -1,17 +1,83 @@
 const input = document.getElementById('password-input');
 const button = document.getElementById('check-btn');
 const feedback = document.getElementById('feedback');
+const strengthBar = document.getElementById('strength-bar');
 
-// Parooli kontrollimise sündmus
-button.addEventListener('click', () => {
+function checkPasswordStrength(password) {
+    let score = 0;
+
+    // Lisame punkte parooli tugevuse eest
+    if (password.length >= 8) score += 1;
+    if (/[A-Z]/.test(password)) score += 1;
+    if (/[a-z]/.test(password)) score += 1;
+    if (/[0-9]/.test(password)) score += 1;
+    if (/[^A-Za-z0-9]/.test(password)) score += 1;
+
+    return score
+}
+
+function updateStrengthBar() {
+    const password = input.value;
+    const score = checkPasswordStrength(password);
+
+    let strength = 0;
+    let color = "red";
+    let message = "";
+
+    switch (score) {
+        case 0:
+            strength = 0;
+            message = "";
+            color = "transparent";
+            break;
+        case 1:
+            strength = 20;
+            message = "Väga nõrk parool!";
+            color = "red";
+            break;
+        case 2:
+            strength = 40;
+            message = "Nõrk parool!";
+            color = "orange";
+            break;
+        case 3:
+            strength = 60;
+            message = "Keskmine parool.";
+            color = "yellow";
+            break;
+        case 4:
+            strength = 80;
+            message = "Hea parool!";
+            color = "lightgreen";
+            break;
+        case 5:
+            strength = 100;
+            message = "Väga hea parool!";
+            color = "green";
+            break;
+    }
+
+    strengthBar.style.width = strength + "%";
+    strengthBar.style.backgroundColor = color;
+    feedback.textContent = message;
+}
+
+// Reaalajas kontroll
+input.addEventListener('input', updateStrengthBar);
+
+
+// Funktsioon, mis kontrollib parooli
+function checkPassword() {
     const password = input.value;
     let messages = [];
-    
+    updateStrengthBar();
+
     // Kontrollib parooli tugevust kriteeriumite alusel
     if (password.length < 8) messages.push("Parool on alla 8 tähemärki pikk.");
     if (!/[A-Z]/.test(password)) messages.push("Paroolis ei ole ühtegi suurt tähte.");
     if (!/[a-z]/.test(password)) messages.push("Paroolis ei ole ühtegi väikest tähte.");
     if (!/[0-9]/.test(password)) messages.push("Paroolis pole ühtegi numbrit.");
+    if (!/[^A-Za-z0-9]/.test(password)) messages.push("Paroolis pole ühtegi erilist tähemärki.")
     
     // Kui vigu ei leita kuvatakse, roheline sõnum
     if (messages.length === 0) {
@@ -22,15 +88,24 @@ button.addEventListener('click', () => {
         feedback.textContent = messages.join("\n");
         feedback.style.color = "red";
     }
-        // Konsooli logi sõnumi kontrollimise jaoks 
-        console.log(feedback.textContent);
+    // Konsooli logi sõnumi kontrollimise jaoks 
+    console.log(feedback.textContent);
+       
+    // Lähtesta sisendi väli pärast kontrollimist (lehte ei pea uue parooli kontrollimiseks refreshima)
+    input.value= "";
 
-        // Lähtesta sisendi väli pärast kontrollimist (lehte ei pea uue parooli kontrollimiseks refreshima)
-        input.value= "";
+    // Tagasiside kustub automaatselt 2s pärast
+    setTimeout(() => {
+        feedback.textContent = "";
+    }, 5000);
+}
 
-        // Tagasiside kustub automaatselt 2s pärast
-        setTimeout(() => {
-            feedback.textContent = "";
-        }, 2000);
+// Nupuvajutuse korral tehakse kontroll    
+button.addEventListener('click', checkPassword);
 
+// Kontroll "Enter" vajutuse korral klaviatuuril
+input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        checkPassword();
+    }
 });

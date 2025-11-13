@@ -7,7 +7,14 @@
             <h2>Kontrolli oma parooli</h2>
             <p>Sisesta näidisparool ning saa tagasisidet parooli tugevuse kohta.</p>
             <input type="password" id="password-input" placeholder="Sisesta parool testimiseks.">
-            <button id="check-btn">Kontrolli parooli</button>
-            <div id="feedback"></div>
+            
+            <div id="strength-bar-container">
+                <div id="strength-bar">
+                    <div id="wave"></div>   
+            </div>
         </div>
+        
+        <button id="check-btn">Kontrolli parooli</button>
+        <div id="feedback"></div>    
+    </div>
 {% endblock %}   

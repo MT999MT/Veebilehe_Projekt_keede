@@ -1,3 +1,10 @@
+// Näita/peida parool
+function togglePassword() {
+    const input = document.getElementById("password-input");
+    input.type = (input.type === "password") ? "text" : "password";
+}
+
+
 const input = document.getElementById('password-input');
 const button = document.getElementById('check-btn');
 const feedback = document.getElementById('feedback');

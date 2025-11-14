@@ -6,7 +6,11 @@
     <div class="password-container">
             <h2>Kontrolli oma parooli</h2>
             <p>Sisesta näidisparool ning saa tagasisidet parooli tugevuse kohta.</p>
+            
+        <div class="password-wrapper">
             <input type="password" id="password-input" placeholder="Sisesta parool testimiseks.">
+            <span class="toggle-eye" onclick="togglePassword()">👁️</span>
+        </div>
             
             <div id="strength-bar-container">
                 <div id="strength-bar">
@@ -15,6 +19,11 @@
         </div>
         
         <button id="check-btn">Kontrolli parooli</button>
-        <div id="feedback"></div>    
+        <div id="feedback"></div>
+        
+        <!-- Nupp, mis viib tagasiside lehele -->
+        <button onclick="window.location.href='{{ url_for('tagasiside') }}'" class="mine-tagasiside-lehele-btn">
+            Anna tagasisidet!   
+        </button>
     </div>
 {% endblock %}   

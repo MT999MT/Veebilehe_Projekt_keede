@@ -3,27 +3,69 @@
 {% block title %}Automaatne parooli kontroll{% endblock %}
 
 {% block content %}
-    <div class="password-container">
-            <h2>Kontrolli oma parooli</h2>
-            <p>Sisesta näidisparool ning saa tagasisidet parooli tugevuse kohta.</p>
+    <div class="main-container">
+        <div class="password-container">
+            <h2>Milline on sinu parooli tugevusaste?</h2>
+            <p>Meie parooli testimise tööriista abil saad optimiseerida enda paroole.</p>
             
-        <div class="password-wrapper">
-            <input type="password" id="password-input" placeholder="Sisesta parool testimiseks.">
-            <span class="toggle-eye" onclick="togglePassword()">👁️</span>
-        </div>
+            <div class="password-wrapper">
+                <input type="password" id="password-input" placeholder="Sisesta parool testimiseks.">
+                <span class="toggle-eye" onclick="togglePassword()">👁️</span>
+            </div>
             
-            <div id="strength-bar-container">
-                <div id="strength-bar">
-                    <div id="wave"></div>   
+                <div id="strength-bar-container">
+                    <div id="strength-bar">
+                        <div id="wave"></div>   
+                    </div>
+                </div>
+        
+                <button id="check-btn">Kontrolli parooli</button>
+                <div id="feedback"></div>
+        
+                <!-- Nupp, mis viib tagasiside lehele -->
+                <button onclick="window.location.href='{{ url_for('tagasiside') }}'" class="mine-tagasiside-lehele-btn">
+                    Anna tagasisidet!   
+                </button>
             </div>
         </div>
-        
-        <button id="check-btn">Kontrolli parooli</button>
-        <div id="feedback"></div>
-        
-        <!-- Nupp, mis viib tagasiside lehele -->
-        <button onclick="window.location.href='{{ url_for('tagasiside') }}'" class="mine-tagasiside-lehele-btn">
-            Anna tagasisidet!   
-        </button>
-    </div>
-{% endblock %}   
+
+        <div class="faq-container">
+            <h2 class="faq-title">Korduma kippuvad küsimused (KKK)</h2>
+
+            <div class="faq-item">
+                <h3 class="faq-question">1.Mis on parooli tugevuse testimine?</h3>
+                <p class="faq-answer">Parooli tugevuse testimine aitab hinnata, kui kergesti saab teie parooli murda.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">2.Kuidas testitakse parooli tugevust?</h3>
+                <p class="faq-answer">Parooli tugevust testime kriteeriumite alusel milleks on:<br>
+                    1)Tähemärkide arv.<br>
+                    2)Kas sisaldab väikeseid tähti.<br>
+                    3)Kas sisaldab suuri tähti.<br>
+                    4)Kas sisaldab numbreid.<br>
+                    5)Kas sisaldab erilisi tähemärke.<br> 
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">3.Kas ma saan testida igas mahus erinevaid paroole?</h3>
+                <p class="faq-answer">Jah, saate oma parool/e igal ajal uuesti testida.</p>
+            </div>
+    
+            <div class="faq-item">
+                <h3 class="faq-question">4.Kas parooli testimine on teie lehel turvaline?</h3>
+                <p class="faq-answer">Jah, meie lehel paroolide testimine on täielikult anonüümne. Siiski soovitame testimiseks kasutada päris paroolile "sarnast" parooli.</p>
+            </div>
+        </div>
+
+{% endblock %}
+
+<script>
+    document.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+            document.body.classList.add("scrolled");
+        }
+    });
+</script>
+   

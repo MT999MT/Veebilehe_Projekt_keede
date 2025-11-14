@@ -116,3 +116,16 @@ input.addEventListener('keydown', (event) => {
         checkPassword();
     }
 });
+
+// Et muuta KKK nähtavaks, kui lehte on piisavalt keritud.
+window.addEventListener("scroll", function() {
+    const faq = document.querySelector('.faq-container');
+    const scrollY = window.scrollY || window.pageYOffset;
+    const documentHeight = document.documentElement.scrollHeight;
+    const viewportHeight = window.innerHeight;
+    
+    if (scrollY + viewportHeight >= documentHeight * 0.8) {
+        faq.style.opacity = 1;
+        document.body.classList.add("scrolled");
+    }
+});

@@ -129,3 +129,71 @@ window.addEventListener("scroll", function() {
         document.body.classList.add("scrolled");
     }
 });
+
+    document.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+            document.body.classList.add("scrolled");
+    }
+});
+
+// Funktsioon mille abil saab kasutaja KKK tabelis küsimuste peale vajutada
+document.querySelectorAll('.faq-question').forEach(item => {
+    item.addEventListener('click', () => {
+
+        const answer = item.nextElementSibling;
+
+        if (answer.style.display === "none" || answer.style.display === "") {
+            answer.style.display = "block";
+        } else {
+            answer.style.display = "none";
+        }
+    });
+});
+
+window.addEventListener('scroll', function() {
+    const bottomHeader = document.getElementById('bottom-header');
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    if (scrollPosition >= documentHeight * 0.8) {
+        bottomHeader.classList.add('show');
+    } else {
+        bottomHeader.classList.remove('show');
+    }
+});
+
+// Dark/Light mode funktsioon
+function toggleDarkMode() {
+    const body = document.body;
+    
+    if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+        modeButton.innerHTML = "🌙";
+    } else {
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+        modeButton.innerHTML = "☀️";
+    }
+}
+
+window.onload =() => {
+    const savedTheme = localStorage.getItem('theme');
+    const modeButton = document.getElementById("mode-toggle-btn");
+    
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        modeButton.innerHTML = "☀️";   
+    } else {
+        document.body.classList.remove('dark-mode');
+        modeButton.innerHTML = "🌙";
+    }
+};
+    
+ 
+
+
+        
+        
+    
+

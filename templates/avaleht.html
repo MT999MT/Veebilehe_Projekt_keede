@@ -4,6 +4,11 @@
 
 {% block content %}
     <div class="main-container">
+        <!-- Dark/Light mode nupp -->
+        <div class="mode-toggle">
+            <button id="mode-toggle-btn" onclick="toggleDarkMode()">🌙</button>
+        </div>
+
         <div class="password-container">
             <h2>Milline on sinu parooli tugevusaste?</h2>
             <p>Meie parooli testimise tööriista abil saad optimiseerida enda paroole.</p>
@@ -59,13 +64,10 @@
             </div>
         </div>
 
+        <!-- Alumine header -->
+         <div class="bottom-header" id="bottom-header"></div>
+
 {% endblock %}
 
-<script>
-    document.addEventListener("scroll", () => {
-        if (window.scrollY > 100) {
-            document.body.classList.add("scrolled");
-        }
-    });
-</script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
    

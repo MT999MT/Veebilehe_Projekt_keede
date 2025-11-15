@@ -165,29 +165,16 @@ window.addEventListener('scroll', function() {
 // Dark/Light mode funktsioon
 function toggleDarkMode() {
     const body = document.body;
-    
-    if (body.classList.contains('dark-mode')) {
-        body.classList.remove('dark-mode');
-        localStorage.setItem('theme', 'light');
-        modeButton.innerHTML = "🌙";
-    } else {
-        body.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark');
-        modeButton.innerHTML = "☀️";
-    }
+    const modeButton = document.getElementById("mode-toggle-btn");
+
+    body.classList.toggle('dark-mode');
+    modeButton.innerHTML = body.classList.contains('dark-mode') ? "☀️" : "🌙";
 }
 
-window.onload =() => {
-    const savedTheme = localStorage.getItem('theme');
-    const modeButton = document.getElementById("mode-toggle-btn");
-    
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        modeButton.innerHTML = "☀️";   
-    } else {
-        document.body.classList.remove('dark-mode');
-        modeButton.innerHTML = "🌙";
-    }
+// Lehe laadimisel määratakse algselt dark mode
+win.onload = () => {
+    document.body.classList.add('dark-mode');
+    document.getElementById("mode-toggle-btn").innerHTML = "☀️";   
 };
     
  

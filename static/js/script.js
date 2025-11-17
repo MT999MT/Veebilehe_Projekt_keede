@@ -168,14 +168,20 @@ function toggleDarkMode() {
     const modeButton = document.getElementById("mode-toggle-btn");
 
     body.classList.toggle('dark-mode');
-    modeButton.innerHTML = body.classList.contains('dark-mode') ? "☀️" : "🌙";
+    modeButton.innerHTML = body.classList.contains('dark-mode') ? "☼" : "☾";
 }
 
 // Lehe laadimisel määratakse algselt dark mode
 win.onload = () => {
     document.body.classList.add('dark-mode');
-    document.getElementById("mode-toggle-btn").innerHTML = "☀️";   
-};
+    document.getElementById("mode-toggle-btn").innerHTML = "☼";   
+}
+
+// Funktsioon menüü kuvamiseks/peitmiseks
+function toggleMenu() {
+    const menu = document.getElementById('dropdown-menu');
+    menu.classList.toggle('active');
+}
     
  
 

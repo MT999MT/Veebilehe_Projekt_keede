@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Paroolikontroll{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/lehe_kujundus.css') }}">
+    <title>{% block title %}Parooli Tester{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lehe_kujundus_dark.css') }}">
     <link rel="icon" href="data:;base64,=" />
 </head>
 <body>
@@ -14,14 +14,23 @@
             <img src="{{ url_for('static', filename='images/PASSCK.gif') }}" alt="Logo" class = "logo">
          </div>
 
-    <h1>Automaatne parooli kontroll</h1>
-    <nav>
-        <ul class ="nav-links">
-            <li><a href="/">Avaleht</a></li>  <!-- Flaski avaleht route -->
-            <li><a href="/about">Meist</a></li> <!-- Flaski Meist lehe route -->
-            <li><a href="/kontakt">Kontakt</a></li> <!-- Flaski Kontakt lehe route -->
+    <h1>PAROOLI TESTER</h1>
+
+    <!-- Menüü ikoon -->
+    <div class="menüü" onclick="toggleMenu()">
+        <span class="menüü-text">Menüü</span>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <div class="dropdown-menu" id="dropdown-menu">
+        <ul>
+            <li><a href="/">∘ Avaleht</a></li>
+            <li><a href="about">∘ Meist</a></li>
+            <li><a href="kontakt">∘ Kontakt</a></li>
         </ul>
-     </nav>
+    </div>
 </header>
 
     <main class="main-container">

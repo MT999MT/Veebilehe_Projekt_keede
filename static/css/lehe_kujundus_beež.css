@@ -1,9 +1,39 @@
-
 :root {
-    --bg-color: #fff;
-    --text-color: white;
-    --primary-green: #00a88e;
+    /* Värvimuutujad */
+    --bg-color: #F1F3E0;
+    --text-color: black;
+    --primary: black;
+   
+    /* Linkid */
+    --link-highlight-color: rgb(2, 214, 251);
+    --shadow-color: white;
+    --link-text-color: orange;
+    
+    /* Passowrd container */
+    --password-container-bg-color: #D2DCB6;
+    --input-placeholder-color: black;
+    --input-bg-color: #F1F3E0;
+    --input-shadow-color: white;
+   
+    /* Header */
+    --header-border-color: black;
+    --header-bg-color: #F1F3E0;
+    --header-shadow-color: white;
+
+    /* Nupud */
+    --button-hover-color: white;
+    --button-shadow-color: white;
+    --button-bg-color: orange;
+    --button-text-color: black;
+    --button-hover-bg-color: white;
+    --button-hover-text-color: black;
+
+    /* Strength bar */
+    --bar-bg-color: black;
+    --bar-boder-color: black;
+
 }
+
 /* Üldine stiil */
 body {
     font-family: 'Anton', sans-serif;
@@ -18,22 +48,20 @@ body {
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
-    
-
 }
 /* Header stiil */
 header {
     text-align: left;
     padding: 20px 0;
-    background-color: white;
-    color: black;
-    border: 2px solid black;
+    background-color: var(--header-bg-color);
+    color: var(--header-border);
+    border: 1px solid var(--header-border-color);
     border-radius: 12px;
     width: 100%;
     margin: 0;
     box-shadow:
-    0 0 12px #39FF14,
-    0 0 20px rgba(57,255,20,0.6),
+    0 0 10px var(--header-shadow-color),
+    0 0 20px black,
     inset 0 0 10px rgba(57,255,20,0.25);
     position: fixed;
     top: 0;
@@ -46,7 +74,7 @@ header {
 h1 {
     margin-left: 160px;
     font-size: 2.5rem;
-    color: purple;
+    color: var(--text-color);
 }
 /* Navigeerimislingid */
 .nav-links {
@@ -65,7 +93,7 @@ h1 {
 }
 /* Lingid ise */
 .nav-links a {
-    color: purple;
+    color: var(--link-text-color);
     text-decoration: none;
     font-weight: bold;
     font-size: 1.5rem;
@@ -74,15 +102,15 @@ h1 {
 /* Hõljuv efekt lingile */
 .nav-links a:hover {
     text-decoration: underline;
-    color: white;
+    color: var(--link-highlight-color);
 }
 /* Peamise sisu konteiner */
 .main-container {
     justify-content: center;
     align-items: center;
-    color: purple;
+    color: var(--primary);
     min-height: 100vh;
-    width: 78%;
+    width: 100%;
     padding: 0 20px;
     margin-top: 200px;
     
@@ -92,9 +120,9 @@ h1 {
 .password-container {
     padding: 50px;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: var(--password-container-bg-color);
     box-shadow: 0 4px 10px;
-    text-align: left;
+    text-align: center;
     width: 100%;
     box-sizing: border-box;
 
@@ -103,7 +131,7 @@ h1 {
 .password-container h2 {
     font-size: 5rem;
     font-weight: bold;
-    text-shadow: 0 0 0px purple, 0 0 0px purple;
+    text-shadow: 0 0 0px var(--input-shadow-color);
 
 }
 /* Parooli sisestamise selgitav text */
@@ -111,47 +139,28 @@ h1 {
     font-size: 2.5rem;
     font-weight: bold;
     margin-top: 10px;
-    text-shadow: 0 0 0px #39FF14;
+    text-shadow: 0 0 0px var(--input-shadow-color);
 }
-/* Parooli sisestamise sisendala*/
-input[type="password"] {
-    padding: 20px;
-    width: 80%;
-    margin-bottom: 20px;
-    font-size: 20px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.95);
-    box-shadow: 0 0 35px rgba(57, 255, 20, 0.5),
-                inset 0 0 30px rgba(57, 255, 20, 0.25);
-    border: 2px solid purple;
-    border-radius: 5px;
-    text-align: left;
-    transition: 0.3s;
-}
-/* Parooli sisestamise staatiline text ("Palun sisesta parool testimiseks.") */
-input[type="password"]::placeholder {
-    color: pink;
-    text-shadow: 0 0 0px #39FF14;
-    opacity: 1;
-}
+
+
 /* Kontrolli parooli npu stiil */
 button {
     padding: 14px 38px;
     font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
-    background-color: #39FF14;
-    color: black;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
     border: 10px;
     border-radius: 10px;
     margin-top: 20px;
-    box-shadow: 0 0 25px rgba(57,255,28,0.6);
+    box-shadow: 0 0 25px var(--button-shadow-color);
 }
 /* Hõljuv efekt nupule */
 button:hover {
-    background-color: white;
-    color: black;
-    box-shadow: 0 0 40px white, 0 0 60px #39FF14;
+    background-color: var(--button-hover-bg-color);
+    color: var(--button-hover-text-color);
+    box-shadow: 0 0 40px var(--button-hover-bg-color), 0 0 60px var(--button-shadow-color);
     transform: scale(1.05);
 }
 /* Paroolitugevuse mõõdiku konteiner */
@@ -159,12 +168,12 @@ button:hover {
     position: relative;
     width: 93%;
     height: 35px;
-    background-color: black;
-    border: 2px solid #39FF14;
+    background-color: var(--bar-bg-color);
+    border: 2px solid var(--bar-bolder-color);
     border-radius: 12px;
     overflow: hidden;
     margin-top: 5px;
-    box-shadow: 0 0 15px rgba(57,255,20,0.4);
+    box-shadow: 0 0 15px red;
 }
 /* Paroolitugevuse mõõdik */
 #strength-bar {
@@ -206,15 +215,15 @@ button:hover {
 }
 /* Kasutajapoolse tagasiside vormi nupu "saada" stiil */
 button.tagasiside-nupp {
-    background-color: #39FF14;
-    color: black;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
     width: 100%;
     font-size: 18px;
 }
 /* Hõljuv efekt */
 button.tagasiside-nupp:hover {
-    background-color: #32cc10;
-    color: white;
+    background-color: var(button-bg-color);
+    color: var(--button-text-color);
 }
 
 /* "Anna tagasisidet!" nupu stiil */
@@ -223,8 +232,8 @@ button.tagasiside-nupp:hover {
     font-size: 1.4rem;
     font-weight: bold;
     cursor: pointer;
-    background-color: #39FF14;
-    color: white;
+    background-color: var(--button-bg-color);
+    color: var(white-color);
     border: 10px;
     border-radius: 10px;
     margin-top: 20px;
@@ -232,37 +241,37 @@ button.tagasiside-nupp:hover {
     position: fixed;
     right: 20px;
     bottom: 20px;
-    box-shadow: 0 0 18px rgba(57,255,20,0.6);
+    box-shadow: var(--button-shadow-color);
     z-index: 999;
 }
 
 /* Hõljuv efekt */
 .mine-tagasiside-lehele-btn:hover {
-    background-color: white;
+    background-color: var(--button-hover-bg-color);
     color: black;
-    box-shadow: 0 0 25px white, 0 0 35px #39FF14;
+    box-shadow: var(--button-shadow-color);
     transform: scale(1.03);
 }
 
 /* Tagasiside lehe konteiner */
 .tagasiside-container {
     max-width: 800px;
-    margin: 50px auto;
     background-color: black;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
-    border: 2px solid #39FF14;
-    text-align: center;
+    border: 2px solid orange;
+    text-align: left;
+    margin: 100px;
 }
 
 /* Pealkirja stiil */
 .tagasiside-pealkiri {
-    font-size: 4rem;
-    text-align: center;
+    font-size: 3rem;
+    text-align: left;
     margin-bottom: 50px;
-    color: #39FF14;
-    text-shadow: 0 0 10px #39FF14;
+    color: orange;
+    text-shadow: 0 0 4px orange;
 }
 
 /* Vormi grupp */
@@ -274,10 +283,10 @@ button.tagasiside-nupp:hover {
 .form-group label {
     display: block;
     font-size: 1.8rem;
-    color: #39FF14;
+    color: orange;
     margin-bottom: 8px;
     font-weight: bold;
-    text-shadow: 0 0 8px #39FF14;
+    text-shadow: 0 0 8px orange;
 }
 
 /* Sisendväljad */
@@ -286,10 +295,10 @@ button.tagasiside-nupp:hover {
     width: 100%;
     padding: 15px;
     font-size: 1.3rem;
-    border: 2px solid #39FF14;
+    border: 2px solid orange;
     border-radius: 10px;
-    background-color: #0e0e0e;
-    color: #39FF14;
+    background-color: black;
+    color: orange;
     box-shadow: inset 0 0 15px rgba(57,255,20,0.25);
     transition: 0.3s ease;
     margin-left: 0;
@@ -311,7 +320,7 @@ button.tagasiside-nupp:hover {
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    background-color: #39FF14;
+    background-color: orange;
     color: black;
     box-shadow: 0 0 18px rgba(57,255,20,0.6);
     transition: 0.3s ease;
@@ -349,12 +358,12 @@ button.tagasiside-nupp:hover {
     padding: 80px;
     width: 100%;
     font-size: 20px;
-    color: #b3b3b3;
-    background-color: black;
-    border: 2px solid #39FF14;
+    color: var(--input-color);
+    background-color: var(--input-bg-color);
+    border: 0px solid #39FF14;
     border-radius: 10px;
     outline: none;
-    box-shadow: 0 0 10px rgba(57,255,20,0.5);
+    box-shadow: var(--input-shadow-color);
 }
 
 .password-wrapper .toggle-eye:hover {
@@ -363,14 +372,14 @@ button.tagasiside-nupp:hover {
 
 /*FAQ konteineri stiil */
 .faq-container {
-    background-color: #1a1a1a;
+    background-color: gray;
     color: #39FF14;
     padding: 50px;
     border-top: 3px solid #39FF14;
     margin-top: 30px;
     margin-bottom: 50px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(57,255,20,0.4);
+    box-shadow: 0 0 5px rgba(57,255,20,0.4);
     width: 100%;
     max-width: 1200px;
     opacity: 0;
@@ -385,7 +394,7 @@ body.scrolled .faq-container {
     font-size: 2.5rem;
     text-align: left;
     margin-bottom: 30px;
-    text-shadow: 0 0 10px #39FF14;
+    text-shadow: 0 0 3px #39FF14;
 }
 
 .faq-item {
@@ -395,7 +404,7 @@ body.scrolled .faq-container {
 .faq-question {
     font-size: 1.8rem;
     font-weight: bold;
-    text-shadow: 0 0 8px #39FF14;
+    text-shadow: 0 0 0px #39FF14;
     margin-bottom: 10px;
 }
 
@@ -403,7 +412,7 @@ body.scrolled .faq-container {
     display: none;
     font-size: 1.2rem;
     color: #b3b3b3;
-    text-shadow: 0 0 6px #39FF14;
+    text-shadow: 0 0 1px #39FF14;
     margin-left: 20px;
 }
 
@@ -416,15 +425,15 @@ body.scrolled .faq-container {
 
 .bottom-header {
     padding: 20px 0;
-    background-color: black;
+    background-color: rgba(121, 169, 130, 0.508);
     color: #39FF14;
-    border: 2px solid #39FF14;
+    border: 1px solid #39FF14;
     border-radius: 12px;
     width: 100%;
     margin: 0;
     box-shadow:
-    0 0 12px #39FF14,
-    0 0 20px rgba(57,255,20,0.6),
+    0 0 6px #39FF14,
+    0 0 10px rgba(57,255,20,0.6),
     inset 0 0 10px rgba(57,255,20,0.25);
     position: fixed;
     left: 0;
@@ -458,14 +467,17 @@ body.dark-mode {
 /* Logo konteineri stiil */
 .logo-container {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 4%;
+    left: 50%;
     z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
-    width: 140px;
-    height: 140px;
+    width: 170px;
+    height: 170px;
 }
 
 /* Menüü stiil */

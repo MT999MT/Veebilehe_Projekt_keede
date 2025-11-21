@@ -1,8 +1,8 @@
 :root {
     /* Värvimuutujad */
-    --bg-color: #042123;
-    --text-color: #dffbfb;
-    --primary: #4139e7;
+    --bg-color: steelblue;
+    --text-color: white;
+    --primary: #0d0128;
    
     /* Linkid */
     --link-highlight-color: rgb(2, 214, 251);
@@ -10,20 +10,20 @@
     --link-text-color: #d9dcd6;
     
     /* Passowrd container */
-    --password-container-bg-color: #85eaf1;
+    --password-container-bg-color: #fbab5b;
     --input-placeholder-color: #c8fa30;
-    --input-bg-color: #85eaf1;
+    --input-bg-color: #fbab5b;
     --input-shadow-color: #fbab5b;
    
     /* Header */
     --header-border-color: #0d0128;
-    --header-bg-color: #042123;
+    --header-bg-color: black;
     --header-shadow-color: #fbab5b;
 
     /* Nupud */
     --button-hover-color: #c8fa30;
     --button-shadow-color: #c8fa30;
-    --button-bg-color: #4139e7;
+    --button-bg-color: #9ed105;
     --button-text-color: black;
     --button-hover-bg-color: #9ed105;
     --button-hover-text-color: black;
@@ -48,6 +48,7 @@ body {
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
+    animation: rotate-bg-color 10s infinite;
 }
 /* Header stiil */
 header {
@@ -56,7 +57,7 @@ header {
     background-color: var(--header-bg-color);
     color: var(--header-border);
     border: 2px solid var(--header-border-color);
-    border-radius: 12px;
+    border-radius: 0px;
     width: 100%;
     margin: 0;
     box-shadow:
@@ -426,10 +427,10 @@ body.scrolled .faq-container {
 
 .bottom-header {
     padding: 12px 0;
-    background-color: #042123;
-    color: #dffbfb;
+    background-color: black;
+    color: white;
     border: 2px solid #0d0128;
-    border-radius: 12px;
+    border-radius: 0px;
     width: 100%;
     margin: 0;
     box-shadow:
@@ -549,7 +550,7 @@ body.scrolled .faq-container {
 .menüü-text {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #dffbfb;
+    color: white;
     margin-right: 180px;
     transition: color 0.3s ease;
 }
@@ -668,3 +669,40 @@ body.scrolled .faq-container {
 .feedback-box button:hover {
     background: #005fd1;
 }
+
+@keyframes rotate-bg-color {
+  0% {
+    background-color: steelblue;
+  }
+  10% {
+    background-color: red;
+  }
+  20% {
+    background-color: orange;
+  }
+  30% {
+    background-color: yellow;
+  }
+  40% {
+    background-color: green;
+  }
+  50% {
+    background-color: blue;
+  }
+  60% {
+    background-color: indigo;
+  }
+  70% {
+    background-color: violet;
+  }
+  80% {
+    background-color: pink;
+  }
+  90% {
+    background-color: brown;
+  }
+  100% {
+    background-color: black;
+  }
+}
+

@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Parooli tester{% endblock %}
+{% block title %}Parooli Tester{% endblock %}
 
 {% block content %}
     <div class="main-container">
-        <!-- Dark/Light mode nupp -->
-        <div class="mode-toggle">
-            <button id="mode-toggle-btn" onclick="toggleDarkMode()">☾</button>
-        </div>
-
+        
+        <!-- Parooli testimise kast -->
         <div class="password-container">
             <h2>Milline on sinu parooli tugevusaste?</h2>
             <p>Meie parooli testimise tööriista abil saad optimiseerida enda paroole.</p>
@@ -18,19 +15,34 @@
                 <span class="toggle-eye" onclick="togglePassword()">👁️</span>
             </div>
             
-                <div id="strength-bar-container">
-                    <div id="strength-bar">
-                        <div id="wave"></div>   
-                    </div>
+            <div id="strength-bar-container">
+                <div id="strength-bar">
+                    <div id="wave"></div>   
                 </div>
+            </div>
         
-                <button id="check-btn">Kontrolli parooli</button>
-                <div id="feedback"></div>
-        
-                <!-- Nupp, mis viib tagasiside lehele -->
-                <button onclick="window.location.href='{{ url_for('tagasiside') }}'" class="mine-tagasiside-lehele-btn">
-                    Anna tagasisidet!   
-                </button>
+            <button id="check-btn">Kontrolli parooli</button>
+            <div id="feedback"></div>
+
+            <div id="crack-time" style="margin-top: 10px; font-weight: bold;"></div>
+
+            <!-- Nupp, mis viib tagasiside lehele -->
+            <button onclick="window.location.href='{{ url_for('tagasiside') }}'" class="mine-tagasiside-lehele-btn">
+                Anna tagasisidet!   
+            </button>
+        </div>
+
+        <!-- Ekstra info kast -->
+        <div class="extra-info-container">
+            <h2>Kuidas hoida oma paroole?</h2>
+            <p>1.Loo võimalikult mitmekesine parool- ära kasuta ainult tuntud sõnu või väljendeid.</p>
+            <p>2.Pea silmas, et sinu loodud parool oleks omapärane.</p>
+            <p>3.Kasuta ebaolulisemate (igapäevakasutuses) olevate paroolide jaoks tuntud paroolihaldurit.</p>
+           
+            <div class="extra-images">
+                <img src="{{ url_for('static', filename='images/lukk.png') }}" class="extra-img" alt="Lukk">
+                <img src="{{ url_for('static', filename='images/võti.png') }}" class="extra-img" alt="Võti">
+                <img src="{{ url_for('static', filename='images/telefon.png') }}" class="extra-img" alt="Telefon">
             </div>
         </div>
 
@@ -65,7 +77,9 @@
         </div>
 
         <!-- Alumine header -->
-         <div class="bottom-header" id="bottom-header"></div>
+         <div class="bottom-header" id="bottom-header">
+            <div class="bottom-header-text">ParooliTester 2025</div>
+         </div>
 
 {% endblock %}
 

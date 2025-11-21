@@ -72,6 +72,38 @@ function updateStrengthBar() {
 // Reaalajas kontroll
 input.addEventListener('input', updateStrengthBar);
 
+function calculateEntropy(password) {
+    let charsetSize = 0;
+    if (/[a-z]/.test(password)) charsetSize += 26;
+    if (/[A-Z]/.test(password)) charsetSize += 26;
+    if (/[0-9]/.test(password)) charsetSize += 10;
+    if (/[^A-Za-z0-9]/.test(password)) charsetSize += 32; // erimärgid
+    if(password.length < 8) charsetSize *= 2;
+    return password.length * Math.log2(charsetSize);
+}
+
+// Arvutab murdmisaja sekundites
+const attackSpeeds = {
+    cpu: 5e7,
+    gpu: 1e10,
+    cluster: 1e12
+};
+
+function crackTimeSeconds(entropy, attacker="gpu") {
+    const speed = attackSpeeds[attacker];
+    return Math.pow(2, entropy) / speed;
+}
+
+// Formaat inimesele loetavaks
+function formatTime(seconds) {
+    const minute = 60, hour = 3600, day = 86400, year = 31557600;
+    if (seconds < 1) return (seconds*1000).toFixed(0)+" ms";
+    if (seconds < minute) return seconds.toFixed(2)+" sekundit";
+    if (seconds < hour) return (seconds/minute).toFixed(2)+" minutit";
+    if (seconds < day) return (seconds/hour).toFixed(2)+" tundi";
+    if (seconds < year) return (seconds/day).toFixed(2)+" päeva";
+    return (seconds/year).toFixed(2)+" aastat";
+}
 
 // Funktsioon, mis kontrollib parooli
 function checkPassword() {
@@ -85,6 +117,11 @@ function checkPassword() {
     if (!/[a-z]/.test(password)) messages.push("Paroolis ei ole ühtegi väikest tähte.");
     if (!/[0-9]/.test(password)) messages.push("Paroolis pole ühtegi numbrit.");
     if (!/[^A-Za-z0-9]/.test(password)) messages.push("Paroolis pole ühtegi erilist tähemärki.")
+    if (/(\w)\1\1\1/.test(password)) messages.push("Parool sisaldab liiga palju korduvaid märke.")
+    if ("abcdefghijklmnopqrstuvwxyz".includes(password.toLowerCase())) messages.push("Parool sisaldab lihtsat tähestiku järjestust.")
+    if ("0123456789".includes(password)) messages.push("Parool sisaldab järjestikuseid numbreid.")
+    
+
     
     // Kui vigu ei leita kuvatakse, roheline sõnum
     if (messages.length === 0) {
@@ -95,6 +132,28 @@ function checkPassword() {
         feedback.textContent = messages.join("\n");
         feedback.style.color = "red";
     }
+
+    // Lisame parooli murdmisaja hinnangu
+    const entropy = calculateEntropy(password);
+    const seconds = crackTimeSeconds(entropy, "gpu");
+    const humanTime = formatTime(seconds);
+
+    const timeMessage = `Hinnanguline murdmis-aeg (GPU rünne): ${humanTime}`;
+    console.log(timeMessage);
+
+    const timeFeedback = document.getElementById("crack-time");
+    if(timeFeedback){
+        timeFeedback.textContent = timeMessage;
+    }
+
+    input.value= "";
+
+    setTimeout(() => {
+        feedback.textContent = "";
+        if(timeFeedback) timeFeedback.textContent = "";
+    }, 5000);
+}
+
     // Konsooli logi sõnumi kontrollimise jaoks 
     console.log(feedback.textContent);
        
@@ -105,7 +164,6 @@ function checkPassword() {
     setTimeout(() => {
         feedback.textContent = "";
     }, 5000);
-}
 
 // Nupuvajutuse korral tehakse kontroll    
 button.addEventListener('click', checkPassword);
@@ -161,22 +219,7 @@ window.addEventListener('scroll', function() {
         bottomHeader.classList.remove('show');
     }
 });
-
-// Dark/Light mode funktsioon
-function toggleDarkMode() {
-    const body = document.body;
-    const modeButton = document.getElementById("mode-toggle-btn");
-
-    body.classList.toggle('dark-mode');
-    modeButton.innerHTML = body.classList.contains('dark-mode') ? "☼" : "☾";
-}
-
-// Lehe laadimisel määratakse algselt dark mode
-win.onload = () => {
-    document.body.classList.add('dark-mode');
-    document.getElementById("mode-toggle-btn").innerHTML = "☼";   
-}
-
+ 
 // Funktsioon menüü kuvamiseks/peitmiseks
 function toggleMenu() {
     const menu = document.getElementById('dropdown-menu');

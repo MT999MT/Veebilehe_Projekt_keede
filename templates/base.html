@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Parooli Tester{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/lehe_kujundus_dark.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lehe_kujundus_auto_background_shift.css') }}">
     <link rel="icon" href="data:;base64,=" />
 </head>
 <body>
     <header>
         <!-- Lehe logo -->
          <div class="logo-container">
-            <img src="{{ url_for('static', filename='images/PASSCK.gif') }}" alt="Logo" class = "logo">
+            <img src="{{ url_for('static', filename='images/ParooliTester.gif') }}" alt="Logo" class = "logo">
          </div>
 
     <h1>PAROOLI TESTER</h1>
@@ -37,6 +37,7 @@
         {% block content %} <!-- Siia läheb iga lehe ainulaadne sisu -->
         {% endblock %}
     </main>
+    
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 

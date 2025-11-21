@@ -6,9 +6,18 @@
 <div class ="contact-container">
     <h2>Kontakt</h2>
     <p>Kui teil on küsimusi, võtke meiega ühendust!</p>
+
+    <div class="feedback-box">
+        <form method="post">
+        
+            <label for="email">Teie e-mail:</label>
+            <input type="email" id="email" name="email" placeholder="Sisesta oma e-mail." required>
+            
+            <label for="message">Teie küsimus:</label>
+            <textarea id="message" name="message" placeholder="Võta meiega ühendust." required></textarea>
+
+            <button type="submit">Saada</button>
+        </form>
+    </div>   
 </div>
-<!-- Dark/Light mode nupp -->
-        <div class="mode-toggle">
-            <button id="mode-toggle-btn" onclick="toggleDarkMode()">☾</button>
-        </div>
 {% endblock %}

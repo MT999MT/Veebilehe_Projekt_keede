@@ -151,7 +151,7 @@ function checkPassword() {
     setTimeout(() => {
         feedback.textContent = "";
         if(timeFeedback) timeFeedback.textContent = "";
-    }, 5000);
+    }, 15000);
 }
 
     // Konsooli logi sõnumi kontrollimise jaoks 

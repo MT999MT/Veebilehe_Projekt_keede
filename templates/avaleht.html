@@ -26,23 +26,31 @@
 
             <div id="crack-time" style="margin-top: 10px; font-weight: bold;"></div>
 
-            <!-- Nupp, mis viib tagasiside lehele -->
-            <button onclick="window.location.href='{{ url_for('tagasiside') }}'" class="mine-tagasiside-lehele-btn">
-                Anna tagasisidet!   
-            </button>
         </div>
 
         <!-- Ekstra info kast -->
         <div class="extra-info-container">
             <h2>Kuidas hoida oma paroole?</h2>
-            <p>1.Loo võimalikult mitmekesine parool- ära kasuta ainult tuntud sõnu või väljendeid.</p>
-            <p>2.Pea silmas, et sinu loodud parool oleks omapärane.</p>
-            <p>3.Kasuta ebaolulisemate (igapäevakasutuses) olevate paroolide jaoks tuntud paroolihaldurit.</p>
-           
-            <div class="extra-images">
-                <img src="{{ url_for('static', filename='images/lukk.png') }}" class="extra-img" alt="Lukk">
-                <img src="{{ url_for('static', filename='images/võti.png') }}" class="extra-img" alt="Võti">
-                <img src="{{ url_for('static', filename='images/telefon.png') }}" class="extra-img" alt="Telefon">
+
+            <div class="extra-item-container">
+                <div class="extra-item">
+                    <p>1. Loo võimalikult mitmekesine parool — ära kasuta ainult tuntud sõnu või väljendeid.</p>
+                    <img src="{{ url_for('static', filename='images/lukk.png') }}" class="extra-img" alt="Lukk">
+                </div>
+            </div>
+
+            <div class="extra-item-container">
+                <div class="extra-item">
+                    <p>2. Pea silmas, et sinu loodud parool oleks omapärane.</p>
+                    <img src="{{ url_for('static', filename='images/võti.png') }}" class="extra-img" alt="Võti">
+                </div>
+            </div>
+
+            <div class="extra-item-container">
+                <div class="extra-item">
+                    <p>3. Kasuta ebaolulisemate (igapäevakasutuses) olevate paroolide jaoks tuntud paroolihaldurit.</p>
+                    <img src="{{ url_for('static', filename='images/telefon.png') }}" class="extra-img" alt="Telefon">
+                </div>
             </div>
         </div>
 
@@ -79,7 +87,12 @@
         <!-- Alumine header -->
          <div class="bottom-header" id="bottom-header">
             <div class="bottom-header-text">ParooliTester 2025</div>
-         </div>
+            <div class="footer-links">
+                <a href="{{ url_for('kontakt') }}" class="footer-link">Kontakt</a>
+                <a href="{{ url_for('about') }}" class="footer-link">Meist</a>
+            </div>
+        </div>
+
 
 {% endblock %}
 
